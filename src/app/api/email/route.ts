@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
    host: process.env.SMTP_HOST,
    port: 587,
    secure: false,
@@ -10,12 +11,24 @@ export const transporter = nodemailer.createTransport({
    },
 });
 
-export const sendEmail = async (to: string, subject: string, body: string) => {
-   console.log("sending mail");
-   await transporter.sendMail({
-      from: process.env.FROM_EMAIL,
-      to,
-      subject,
-      html: body,
-   });
-};
+// POST handler for sending emails
+export async function POST(request: Request) {
+   try {
+      const { to, subject, body } = await request.json();
+
+      await transporter.sendMail({
+         from: process.env.FROM_EMAIL,
+         to,
+         subject,
+         html: body,
+      });
+
+      return NextResponse.json({ success: true });
+   } catch (error) {
+      console.error("Error sending email:", error);
+      return NextResponse.json(
+         { error: "Failed to send email" },
+         { status: 500 }
+      );
+   }
+}
