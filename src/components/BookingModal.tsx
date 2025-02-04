@@ -24,11 +24,17 @@ export default function BookingModal({ event, isOpen, onClose }: Props) {
       setError("");
       setIsLoading(true);
       try {
-         // TODO: Implement actual email verification
-         await new Promise((resolve) => setTimeout(resolve, 1500));
+         const response = await fetch("/api/otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+         });
+
+         const data = await response.json();
+         if (!response.ok) throw new Error(data.error);
+
          setStep("otp");
-      } catch (err) {
-         console.log(err);
+      } catch {
          setError("Failed to send OTP. Please try again.");
       }
       setIsLoading(false);
@@ -39,11 +45,17 @@ export default function BookingModal({ event, isOpen, onClose }: Props) {
       setError("");
       setIsLoading(true);
       try {
-         // TODO: Implement actual OTP verification
-         await new Promise((resolve) => setTimeout(resolve, 1500));
-         window.location.href = event.eventUrl;
-      } catch (err) {
-         console.log(err);
+         const response = await fetch("/api/otp", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, otp }),
+         });
+
+         const data = await response.json();
+         if (!response.ok) throw new Error(data.error);
+
+         window.location.href = event!.eventUrl;
+      } catch {
          setError("Invalid OTP. Please try again.");
       }
       setIsLoading(false);

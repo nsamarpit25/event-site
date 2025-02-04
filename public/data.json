@@ -1,50 +1,93 @@
-[
-   {
-      "id": "1",
-      "title": "Sydney Symphony Orchestra: Beethoven's Ninth",
-      "date": "2025-02-15T19:30:00",
-      "time": "7:30 PM",
+{
+  "metadata": {
+    "lastFetched": "2025-02-04T22:50:27.679Z",
+    "expiresAt": "2025-02-05T22:50:27.679Z"
+  },
+  "events": [
+    {
+      "id": "14",
+      "title": "FOSSASIA 2015",
+      "description": "<p></p><p>FOSSASIA 2015 marked the first time the summit was held in Singapore. The conference featured over 100 talks and workshops covering the latest in Free and Open Source Technology projects, including those focused on the development of Singapore as a smart nation. Other topics and activities include: Free and Open Source software, web and mobile development, software for education, map solutions for websites and phones, open knowledge tools, Wikipedia, open data, big data, sensor networks, free wireless networks, graphic design, fashion technology, open source knitting machines and 3D printing. Dr. Vivian Balakrishnan, the Singapore minister in charge of the Smart Nation initiative, also graced the event. </p>",
+      "imageUrl": "https://storage.eventyay.com/eventyay.com/events/14/background/U1JjUmEwbX/1482568722.69.png",
+      "eventUrl": "https://eventyay.com/e/97e70942/tickets/",
+      "date": "3/13/2015",
+      "time": "6:30:00 AM",
       "venue": {
-         "name": "Sydney Opera House",
-         "address": "Bennelong Point, Sydney NSW 2000"
-      },
-      "price": "$80 - $250",
-      "category": ["Music", "Classical"],
-      "description": "Experience the power of Beethoven's iconic Symphony No. 9 with the Sydney Symphony Orchestra in this spectacular performance at the Sydney Opera House.",
-      "imageUrl": "https://images.unsplash.com/photo-1574786577759-aebe3a095357",
-      "eventUrl": "https://www.sydneyoperahouse.com/events",
-      "bookingUrl": "https://tickets.sydneyoperahouse.com/event/123"
-   },
-   {
-      "id": "2",
-      "title": "Sydney Food Festival 2025",
-      "date": "2025-03-01T10:00:00",
-      "time": "10:00 AM - 10:00 PM",
-      "venue": {
-         "name": "The Rocks",
-         "address": "George Street, The Rocks NSW 2000"
-      },
-      "price": "Free Entry",
-      "category": ["Food & Drink", "Festival"],
-      "description": "Annual food festival featuring 200+ vendors, cooking demonstrations, and live entertainment. Taste the best of Sydney's culinary scene!",
-      "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-      "eventUrl": "https://www.sydneyfoodfestival.com",
-      "bookingUrl": "https://events.sydneyfoodfestival.com/tickets"
-   },
-   {
-      "id": "3",
-      "title": "Tech Startup Meetup Sydney",
-      "date": "2025-02-20T18:00:00",
-      "time": "6:00 PM",
-      "venue": {
-         "name": "Fishburners",
-         "address": "11-31 York Street, Sydney NSW 2000"
+        "name": " Biopolis Way Singapore  Singapore 138668 ",
+        "address": "Singapore"
       },
       "price": "Free",
-      "category": ["Technology", "Networking"],
-      "description": "Monthly meetup for tech entrepreneurs and startup enthusiasts. Featuring guest speakers from successful Australian startups.",
-      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-      "eventUrl": "https://www.meetup.com/sydney-tech-startups",
-      "bookingUrl": "https://meetup.com/sydney-tech-startups/rsvp"
-   }
-]
+      "category": [
+        "/v1/events/14/event-type"
+      ]
+    },
+    {
+      "id": "226",
+      "title": "Ze Wei in Recital",
+      "description": "<p></p>\n                \n                    Pianist Ng Ze Wei debuts on 16th December 2015!\n                    <p>Catch Ze Wei and his sister, Wen \nYan, LIVE at the Esplanade Recital Studio on the 16th of December 2015, \nWednesday, 7:30 pm, as he brings you to not only places around the \nworld, but to another dimension of time too!\n</p>\n<p>“Overall, this was an excellently prepared and musically\n satisfying performance with a real sense of communication and \nimpressive technical control.” - Fali Pavri (Examined Ng Ze Wei in LRSM - Piano Performance)</p>\n<p>“Wonderful repertoire. Perfect acoustics. Gorgeous melodies. I must attend this recital” - Ze Wei</p>\n                \n            <p></p>",
+      "imageUrl": "",
+      "eventUrl": "https://eventyay.com/e/a3332439/",
+      "date": "12/16/2015",
+      "time": "4:30:00 PM",
+      "venue": {
+        "name": "1 Esplanade Drive Singapore  Singapore  ",
+        "address": "Singapore"
+      },
+      "price": "Free",
+      "category": [
+        "/v1/events/226/event-type"
+      ]
+    },
+    {
+      "id": "41",
+      "title": " CVIP 2016 : International Conference on Computer Vision & Image Processing",
+      "description": "<p>CVIP 2016 is an IAPR endorsed conference. Authors are invited to submit \nunpublished papers, which are not in consideration at any other \nconference or journal.</p><p>\nPaper Submission:\n</p><ul><li>Prospective authors are invited to submit papers of maximum 10 pages\n length that includes text, figures, tables and references at the paper \nsubmission webpage. Instruction for submission, templates for formatting\n papers will be made available at the submission page.\n</li></ul><p>Proceedings:\n</p><ul><li>All accepted papers, whose author(s) register, would be included in \nthe conference proceedings to be published by Springer in their Advances\n in Intelligent Systems and Computing series.\n\t</li></ul>",
+      "imageUrl": "https://storage.eventyay.com/eventyay.com/events/41/background/OE43eEphWU/1482999483.33.png",
+      "eventUrl": "",
+      "date": "2/26/2016",
+      "time": "9:00:00 AM",
+      "venue": {
+        "name": "Indian Institute of Technology Roorkee, Roorkee, Uttarakhand, India",
+        "address": ""
+      },
+      "price": "Free",
+      "category": [
+        "/v1/events/41/event-type"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "FOSSASIA 2016",
+      "description": "FOSSASIA is the premier Free and Open Source technology event in Asia for developers, start-ups, and contributors. Projects at FOSSASIA range from open hardware, to design, graphics and software. FOSSASIA was established in 2009. Previous events took place in Cambodia and Vietnam.",
+      "imageUrl": "https://storage.eventyay.com/eventyay.com/events/20/background/cUoxQ3RaVE/2e516082-1c79-4b80-8dd5-9e605f9dde17.png",
+      "eventUrl": "http://www.eventnook.com/event/fossasia",
+      "date": "3/18/2016",
+      "time": "7:00:00 AM",
+      "venue": {
+        "name": "15 Science Centre Rd, Singapore 609081",
+        "address": "Singapore"
+      },
+      "price": "Free",
+      "category": [
+        "/v1/events/20/event-type"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Hack In The North",
+      "description": "<p>This is a student held hackathon for students from all over India. This is India's biggest hackathon.</p>",
+      "imageUrl": "https://storage.eventyay.com/eventyay.com/events/3/background/TnpEME15VW/1480582215.73.png",
+      "eventUrl": "",
+      "date": "1/12/2017",
+      "time": "12:30:00 AM",
+      "venue": {
+        "name": "IIIT Road, Jhalwa, Allahabad, Uttar Pradesh, India",
+        "address": "Allahabad"
+      },
+      "price": "Free",
+      "category": [
+        "/v1/events/3/event-type"
+      ]
+    }
+  ]
+}
