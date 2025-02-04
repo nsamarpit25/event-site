@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Event Site with Next.js
 
-## Getting Started
+A modern event aggregation platform built with Next.js 13+, leveraging the App Router and Server Components for optimal performance.
 
-First, run the development server:
+## Tech Stack
+
+-  **Framework**: Next.js 13+ (App Router)
+-  **Language**: TypeScript
+-  **Styling**: Tailwind CSS
+-  **API Integration**: Axios
+-  **Caching**: File-based (temporary) with 24h TTL
+-  **Rate Limiting**: Custom implementation
+-  **State Management**: React Server Components + Client Hooks
+-  **Deployment**: Vercel (recommended)
+
+## Architecture
+
+### API Layer
+
+-  Custom wrapper around Eventyay API
+-  Rate limiting implementation (5-minute cooldown)
+-  Response transformation and normalization
+-  Error boundary handling
+-  Automatic retry logic
+
+### Caching System
+
+```typescript
+interface CacheStructure {
+   metadata: {
+      lastFetched: string;
+      expiresAt: string;
+   };
+   events: EventType[];
+}
+
+interface EventType {
+   id: string;
+   title: string;
+   description: string;
+   imageUrl: string;
+   eventUrl: string;
+   date: string;
+   time: string;
+   venue?: {
+      name: string;
+      address: string;
+   };
+   price: string;
+   category?: string[];
+}
+```
+
+### Performance Features
+
+-  Streaming SSR
+-  Optimized image loading with next/image
+-  Automatic static optimization where possible
+-  Intelligent cache invalidation
+-  Progressive enhancement
+
+### Directory Structure
+
+```
+src/
+├── app/                 # Next.js App Router
+│   ├── page.tsx        # Home page
+│   ├── layout.tsx      # Root layout
+│   ├── events/         # Events routes
+│   └── api/           # API routes
+├── components/         # React components
+│   ├── ui/            # Reusable UI components
+│   └── features/      # Feature-specific components
+├── services/          # Business logic & API
+│   ├── eventFetcher.ts  # Event API integration
+│   └── cacheManager.ts  # Cache management
+├── types/             # TypeScript definitions
+└── utils/             # Utility functions
+```
+
+## API Routes
+
+### GET /api/events
+
+Fetches events with caching and rate limiting:
+
+```typescript
+Response {
+  events: EventType[];
+  metadata?: {
+    cached: boolean;
+    lastFetched: string;
+    nextUpdate: string;
+  }
+}
+```
+
+### Rate Limiting Logic
+
+```typescript
+const RATE_LIMIT_MINUTES = 5;
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24h
+
+// Rate limit check
+const timeSinceLastFetch = (now - lastFetched) / (1000 * 60);
+if (timeSinceLastFetch < RATE_LIMIT_MINUTES) {
+   return cachedData;
+}
+```
+
+## Component Architecture
+
+### Server Components
+
+-  EventList: Server-side rendering of event grid
+-  EventDetails: Dynamic event information display
+-  CategoryFilter: Server-side filtering
+
+### Client Components
+
+-  SearchBar: Real-time search functionality
+-  FilterPanel: Interactive filtering
+-  FavoriteButton: Client-side favoriting
+
+## Setup & Development
+
+1. **Installation**
+
+```bash
+git clone <repository-url>
+cd event-site
+npm install
+```
+
+2. **Environment Setup** Create `.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=https://api.eventyay.com/v1
+NEXT_PUBLIC_CACHE_DURATION=86400
+NEXT_PUBLIC_RATE_LIMIT_MINUTES=5
+```
+
+3. **Development Server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Build & Production**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data Flow
 
-## Learn More
+1. Client Request → Next.js Edge Runtime
+2. Check Cache Status
+   -  If valid & fresh → Return cached data
+   -  If stale → Trigger background refresh
+   -  If missing → Fetch from API
+3. Transform & Normalize Data
+4. Update Cache
+5. Stream Response to Client
 
-To learn more about Next.js, take a look at the following resources:
+## Cache Management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The current file-based cache system (`data.json`) implements:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-  Automatic invalidation after 24 hours
+-  Background refresh
+-  Race condition prevention
+-  Error fallback to cached data
 
-## Deploy on Vercel
+## Future Enhancements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Database Migration**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-  MongoDB for event data
+-  Redis for caching
+-  PostgreSQL for user data
